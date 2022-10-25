@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome to JustArnav-v2</title>
+	<meta name="viewport" content="initial-scale=1.0,width=device-width">
+	<script defer src="https://unpkg.com/alpinejs"></script>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://unpkg.com/jquery@3.6.1/dist/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<style>
+.cursor{
+    font-weight: 700;
+    animation: 1s blink step-end infinite;
+}
+@keyframes blink{
+    from, to{
+        color: transparent;
+    }
+    50%{
+        color: rgb(34, 224, 34);
+    }
+}
+
+	</style>
+</head>
+<body
+	class="bg-zinc-900 text-green-600"
+	>
+		<header class="bg-shadow-800 shadow-xl items-center">
+			<nav class="flex items-center p-4 m-3 sm:gap-4 md:gap-12">
+<h1 class="text-2xl hover:text-3xl font-bold hover:p-3 transition-all">
+	jar@justarnav:~$&nbsp;
+	<span class="cursor">|</span>
+</h1>
+
+<ul x-data="{links: [{name: 'Home'}, {name: 'Github'}, {name: 'Contact'}, {name: 'Blog'}]}" class="items-center text-center sm:grid sm:grid-cols-3 md:grid-cols-5 sm:gap-4">
+	<template x-for="link in links">
+		<li class="hover:p-3 p-2 hover:bg-zinc-800 transition-all hover:rounded"><a x-html="link.name"></a></li>
+	</template>
+				</ul>
+			</nav>
+		</header>
+		
+<section class="sm:gap-4 sm:grid sm:grid-cols-3 md:grid-cols-5">
+<div class="md:col-span-2">
+<h3 class="text-xl text-center">
+About Me
+</h3>
+<br>
+<hr>
+<div class="items-center md:p-4 sm:p-2">
+	<img width="50%" class="p-2 rounded-full" src="https://pbs.twimg.com/profile_images/1582373178219061249/nt43RiNk_400x400.jpg" alt="">
+	<p class="p-2">
+Hi, I am Arnav Ghosh and I live in West Bengal (India).
+My Age is <a id="age" class="inline"></a><script>
+age = document.getElementById('age');
+now = new Date()
+bday = new Date(2004, 7, 11)
+diff=now.getTime() - bday.getTime()
+age.text = Math.round(diff/(1000*3600*24*365))
+	</script> years old, and Love Programming. You Can check my Skills and Projects in the section next to this.
+<ul class="text-xl p-2" style="list-style-type: square">
+I have few Primary Hobbies, like:
+	<li class="ml-7">Programming</li>
+	<li class="ml-7">Getting Beaten by Kids</li>
+	<li class="ml-7">Singing (to disturb neighbours)</li>
+	<li class="ml-7">Stand-up Comedy</li>
+</ul>
+<ul class="text-lg p-2" style="list-style-type: circle">
+	Mail Addresses:
+	<li class="ml-7">arnavghosh67@gmail.com</li>
+	<li class="ml-7">arnavghosh.official.2004@gmail.com</li>
+	<li class="ml-7">clashngarnav20042004@gmail.com</li>
+	<li class="ml-7">justarnav2004@gmail.com</li>
+</ul>
+	</p>
+</div>
+<style>
+
+.hide {
+  display: none;
+}
+
+.myDIV:hover > .hide {
+  display: block;
+}
+
+	</style>
+</div>
+<div class="md:col-span-2">
+<h3 class="text-xl text-center">
+	Skills & Projects
+</h3>
+<br>
+<hr>
+<ul 
+	x-data="
+{
+		skills:[
+		{name: 'Python', percent: 70, points: ['WebDev', 'WebScrapping', 'SystemScripts']},
+		{name: 'JS', percent: 40, points: ['Frontend DOM Manipulation', 'WebDev using Express']},
+		{name: 'HTML', percent: 70, points: ['Basic DOM Making']},
+		{name: 'CSS', percent: 60, points: ['Beautiful CSS code to Prettify Pages', 'Needs Direction on Visual Styling']}
+		]
+	}
+
+"
+	class="p-4 m-4 items-center">
+	<h3 class="text-xl text-center">Skills</h3>
+	<hr width="55%">
+<template x-for="skill in skills">
+	<li
+    		x-data="{ open: false }"
+		class="grid grid-cols-4 gap-5 items-center transition-all hover:p-3 hover:bg-zinc-800 p-2 m-3">
+		<span
+			x-text="skill.name"
+			class="col-span-1"
+			></span>
+		<progress max=100 class="col-span-3" :value="skill.percent"></progress>
+		<button
+			class="hover:bg-zinc-600 bg-zinc-700"
+			@click="open=!open"
+			>More</button>
+		<ul x-show="open" style="list-style-type: circle" class="grid col-span-3">
+		<template x-for="point in skill.points">
+			<li x-html="point"></li>
+		</template>
+	</ul>
+	</li>
+</template>
+</ul>
+<script>
+function getRepos() {
+	let dt;
+	return dt
+}
+function alpineInstance() {
+  return {
+    title: 'Alpine.js',
+    intro: 'Implement a simple <code class="text-md text-pink-600">fetch()</code> request to render a list of items using Alpine.js :)',
+    data: [],
+  }
+}
+</script>
+	<h3 class="text-xl text-center">Projects (Github Repos)</h3>
+	<hr width="55%">
+<ul 
+	class="p-4 m-4 items-center grid grid-cols-2"
+	x-data="alpineInstance()"
+	x-init="
+	fetch('https://api.github.com/users/NotoriousArnav/repos').then(response => response.json()).then(res => data=res);
+"
+	>
+	<script>
+function strTrn(stri, limit) {
+  if (stri.length > limit) { return stri.substring(0, limit)+'...'}
+  return stri
+}
+	</script>
+<template x-for="repo in data">
+	<li>
+		<a target="_blank" class="myDIV grid transition-all hover:p-3 hover:bg-zinc-800 p-2 m-3" :title="repo.full_name+' Click to View on Github'" :href="repo.html_url">
+			<span x-text="strTrn(repo.name, 12)"></span>
+			<span x-text="strTrn(repo.full_name, 19)" class="hide"></span>
+			<span class="hide" x-text="repo.description"></span>
+		</a>
+	</li>
+</template>
+</ul>
+</div>
+<div>
+<h3 class="text-xl text-center">
+	SocialMedia Presence
+</h3>
+<br>
+<hr>
+
+<br>
+<h3 class="text-lg text-center">
+	Platforms I Use
+</h3>
+<br>
+<ul 
+	class="items-center text-center" 
+	x-data="
+		{links:[
+		{name: 'Instagram (@justarnav2004)', url:'https://instagram.com/justarnav2004/'},
+		{name: 'Twitter (@arnv2004)', url:'https://twitter.com/arnv2004'},
+		{name: 'YouTube (JustArnav)', url:'https://www.youtube.com/channel/UCJDemxYDrcNU4gxf3geSWRw'},
+		{name: 'Github (NotoriousArnav)', url: 'https://github.com/NotoriousArnav'}
+		]}
+"
+	>
+	<template x-for="link in links">
+		<li class="hover:p-3 hover:bg-zinc-800 p-2"><a class="p-1" :href="link.url"><span x-html="link.name"></span></a></li>
+	</template>
+</ul>
+<br>
+<hr>
+<br>
+<a href="https://twitter.com/arnv2004?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-dnt="true" data-show-count="false">Follow @arnv2004</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+</section>
+Hello
+</body>
+</html>
